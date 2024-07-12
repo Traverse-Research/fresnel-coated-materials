@@ -1,7 +1,11 @@
-This file contains coefficients for ACEScg from datasets provided in the supplemental code. Code below doesn't contain packing. 
+This file contains coefficients for ACEScg from datasets provided in the supplemental code. Code below doesn't contain packing.
 Simple 16 bit encoding already allows all coefficients to represented by a float4x4.
 
 // --------------------------------------------------- \\
+
+float3 polynomialFit(float v, float3 c0, float3 c1, float3 c2) {
+    return c2 * pow(v, 2.0) + c1 * v + c0;
+}
 
 float ni01 = (min(ni, 2.5) - 1.0) / 1.5;
 float3 p = polynomialFit(ni01, c0, c1, c2);
